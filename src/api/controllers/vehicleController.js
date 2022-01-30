@@ -27,6 +27,18 @@ class VehicleController {
       next(error)
     }
   }
+
+  async update (id) {
+
+  }
+
+  async delete (id) {
+
+  }
+
+  async findOne (id) {
+
+  }
 }
 
 module.exports = new VehicleController()

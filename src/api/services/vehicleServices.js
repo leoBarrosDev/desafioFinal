@@ -11,21 +11,29 @@ class VehicleServices {
     }
   }
 
-  async list (payload) {
-    const vehicles = await VehicleRepository.list({
-      vehicle_id: payload.vehicle_id,
-      modelo: new RegExp(payload.modelo, 'i'),
-      cor: payload.cor,
-      ano: payload.ano,
-      acessorios: payload.acessorios,
-      quantidadePassageiros: payload.quantidadePassageiros,
-      limit: (payload.limit) ? Number(payload.limit) : undefined,
-      skip: (payload.skip) ? Number(payload.skip) : undefined
-    })
+  async list () {
+    const vehicles = await VehicleRepository.list()
     return vehicles
   }
 
   async update (id, payload) {
+    const vehicle = await this.findOneVehicle(id)
+    const mutables = ['modelo', 'cor', 'ano', 'acessorios', 'quantidadePassageiros']
+
+    mutables.forEach(key => {
+      if (payload[key] !== undefined) {
+        vehicle[key] = payload[key]
+      }
+    })
+    await VehicleRepository.update(vehicle)
+    return vehicle
+  }
+
+  async findOneVehicle (id) {
+
+  }
+
+  async delete (id) {
 
   }
 }
