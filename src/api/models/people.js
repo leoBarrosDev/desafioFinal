@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-
 const Schema = mongoose.Schema
 
 const PeopleSchema = new Schema({
@@ -30,10 +29,9 @@ const PeopleSchema = new Schema({
     },
     habilitado: {
         type: String, 
-        require: true,
-        default: "Sim"
+        enum: ['Sim', 'Não'],
+        require: true
     },
 })
-
 
 module.exports = mongoose.model('People', PeopleSchema)
