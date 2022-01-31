@@ -5,12 +5,12 @@ class VehicleRepository {
     return schema.create(vehicle)
   }
 
-  async list (vehicles) {
-    return schema.find(vehicles)
+  async list (payoad) {
+    return schema.find()
   }
 
-  async update (id, ...payload) {
-    return schema.findByIdAndUpdate(id, ...payload)
+  async update (id, payload) {
+    return schema.findByIdAndUpdate(id, payload, { new: true })
   }
 
   async findOneVehicle (id) {
@@ -18,7 +18,7 @@ class VehicleRepository {
   }
 
   async remove (id) {
-    return schema.deleteOne(id)
+    return schema.findByIdAndDelete(id)
   }
 }
 module.exports = new VehicleRepository()

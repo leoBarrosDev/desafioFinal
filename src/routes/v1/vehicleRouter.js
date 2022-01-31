@@ -6,6 +6,6 @@ router
   .get('/car', VehicleController.list)
   .put('/car/:id', VehicleController.update)
   .get('/car/:id', VehicleController.findOne)
-  .delete('/car/:id', VehicleController.delete)
+  .delete('/car/:id', VehicleController.remove)
 
 module.exports = router

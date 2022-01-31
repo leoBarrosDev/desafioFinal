@@ -28,16 +28,39 @@ class VehicleController {
     }
   }
 
-  async update (id) {
-
+  async update (req, res) {
+    const { id } = req.params
+    const newVehicle = req.body
+    try {
+      const result = await VehicleServices.update(id, newVehicle)
+      return res.status(200).json(result)
+    } catch (error) {
+      res.status(500).json(error)
+    }
   }
 
   async delete (id) {
 
   }
 
-  async findOne (id) {
+  async findOne (req, res) {
+    const { id } = req.params
+    try {
+      const result = await VehicleServices.findOneVehicle(id)
+      return res.status(200).json(result)
+    } catch (error) {
+      res.status(500).json(error)
+    }
+  }
 
+  async remove (req, res) {
+    const { id } = req.params
+    try {
+      await VehicleServices.remove(id)
+      res.status(204).end()
+    } catch (error) {
+      res.status(500).json(error)
+    }
   }
 }
 
