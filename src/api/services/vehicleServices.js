@@ -1,14 +1,9 @@
-const res = require('express/lib/response')
 const VehicleRepository = require('../repositories/vehicleRepository')
 
 class VehicleServices {
   async create (vehicle) {
-    try {
-      const result = await VehicleRepository.create(vehicle)
-      return result
-    } catch (error) {
-      res.status(500).json(error)
-    }
+    const result = await VehicleRepository.create(vehicle)
+    return result
   }
 
   async list (payload) {
