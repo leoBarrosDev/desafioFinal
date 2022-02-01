@@ -39,10 +39,6 @@ class VehicleController {
     }
   }
 
-  async delete (id) {
-
-  }
-
   async findOne (req, res) {
     const { id } = req.params
     try {
