@@ -1,36 +1,36 @@
-const VehicleRepository = require('../repositories/vehicleRepository')
+const VehicleRepository = require('../repositories/vehicleRepository');
 
 class VehicleServices {
-  async create (vehicle) {
-    const result = await VehicleRepository.create(vehicle)
-    return result
-  }
+	async create (vehicle) {
+		const result = await VehicleRepository.create(vehicle);
+		return result;
+	}
 
-  async list (payload) {
-    const vehicles = await VehicleRepository.list({
-      vehicles_id: payload.id,
-      modelo: payload.modelo,
-      cor: payload.cor,
-      acessorios: payload.acessorios,
-      quantidadePassageiros: payload.quantidadePassageiros
-    })
-    return vehicles
-  }
+	async list (payload) {
+		const vehicles = await VehicleRepository.list({
+			vehicles_id: payload.id,
+			modelo: payload.modelo,
+			cor: payload.cor,
+			acessorios: payload.acessorios,
+			quantidadePassageiros: payload.quantidadePassageiros
+		});
+		return vehicles;
+	}
 
-  async update (id, payload) {
-    const result = await VehicleRepository.update(id, payload)
-    return result
-  }
+	async update (id, payload) {
+		const result = await VehicleRepository.update(id, payload);
+		return result;
+	}
 
-  async findOneVehicle (id) {
-    const result = await VehicleRepository.findOneVehicle(id)
+	async findOneVehicle (id) {
+		const result = await VehicleRepository.findOneVehicle(id);
 
-    return result
-  }
+		return result;
+	}
 
-  async remove (id) {
-    return await VehicleRepository.remove(id)
-  }
+	async remove (id) {
+		return await VehicleRepository.remove(id);
+	}
 }
 
-module.exports = new VehicleServices()
+module.exports = new VehicleServices();

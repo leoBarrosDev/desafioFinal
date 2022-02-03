@@ -1,14 +1,14 @@
-const mongoose = require('mongoose')
-require('dotenv').config()
+const mongoose = require('mongoose');
+require('dotenv').config();
 
 class MongoDb {
-  constructor () {
-    this.connect()
-  }
+	constructor () {
+		this.connect();
+	}
 
-  connect () {
-    return mongoose.connect(process.env.HOST)
-  }
+	connect () {
+		return mongoose.connect(process.env.HOST);
+	}
 }
 
-module.exports = new MongoDb().connect()
+module.exports = new MongoDb().connect();

@@ -1,24 +1,24 @@
-const schema = require('../models/vehicle')
+const schema = require('../models/vehicle');
 
 class VehicleRepository {
-  async create (vehicle) {
-    return schema.create(vehicle)
-  }
+	async create (vehicle) {
+		return schema.create(vehicle);
+	}
 
-  async list (payoad) {
-    return schema.find()
-  }
+	async list (payload) {
+		return schema.find (payload);
+	}
 
-  async update (id, payload) {
-    return schema.findByIdAndUpdate(id, payload, { new: true })
-  }
+	async update (id, payload) {
+		return schema.findByIdAndUpdate(id, payload, { new: true });
+	}
 
-  async findOneVehicle (id) {
-    return schema.findById(id)
-  }
+	async findOneVehicle (id) {
+		return schema.findById(id);
+	}
 
-  async remove (id) {
-    return schema.findByIdAndDelete(id)
-  }
+	async remove (id) {
+		return schema.findByIdAndDelete(id);
+	}
 }
-module.exports = new VehicleRepository()
+module.exports = new VehicleRepository();
