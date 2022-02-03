@@ -6,7 +6,7 @@ class PeopleRepository {
 	}
 
 	async list (payload) {
-		return schema.find();
+		return schema.find(payload);
 	}
 
 	async update (id, payload) {
