@@ -4,7 +4,7 @@ const BadRequest = require('../../api/errors/BadRequest');
 
 module.exports = async (req, res, next) => {
 	try {
-		const schema = Joi.ibject({
+		const schema = Joi.object({
 			id: Joi.string()
 				.min(24)
 				.max(24)

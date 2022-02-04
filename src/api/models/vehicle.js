@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const mongoosePaginate = require('mongoose-paginate-v2');
 
-//const Schema = mongoose.Schema;
 
 const VehicleSchema = new mongoose.Schema({
 	modelo: {

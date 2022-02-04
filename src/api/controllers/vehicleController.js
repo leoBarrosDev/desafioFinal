@@ -15,13 +15,7 @@ class VehicleController {
 	async list (req, res, next) {
 		try {
 			const payload = req.query;
-			const vehicles = await VehicleServices.list({
-				vehicles_id: payload.id,
-				modelo: payload.modelo,
-				cor: payload.cor,
-				acessorios: payload.acessorios,
-				quantidadePassageiros: payload.quantidadePassageiros
-			});
+			const vehicles = await VehicleServices.list(payload);
 			res.status(200).json(vehicles);
 		} catch (error) {
 			next(error);

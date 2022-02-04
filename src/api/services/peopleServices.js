@@ -8,15 +8,7 @@ class PeopleServices {
 	}
 
 	async list (payload) {
-		const peoples = await PeopleRepository.list({
-			peoples_id: payload.id,
-			nome: payload.nome,
-			cpf: payload.cpf,
-			data_nascimento: payload.data_nascimento,
-			email: payload.email,
-			senha: payload.senha,
-			habilitado: payload.habilitado
-		});
+		const peoples = await PeopleRepository.list(payload);
 		return peoples;
 	}
 
