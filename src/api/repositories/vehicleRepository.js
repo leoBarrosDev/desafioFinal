@@ -6,7 +6,24 @@ class VehicleRepository {
 	}
 
 	async list (payload) {
-		return schema.find (payload);
+		const paginatedFields = {
+			totalDocs: 'total',
+			docs: 'Veiculos',
+			page: 'offset',
+			nextPage: false,
+			prevPage: false,
+			totalPages: 'offsets',
+			pagingCounter: false,
+			meta: false,
+			hasPrevPage: false,
+			hasNextPage: false
+		};
+		const options = {
+			page: 1,
+			limite: 100,
+			customLabels: paginatedFields
+		};
+		return schema.paginate(payload, options, {});
 	}
 
 	async update (id, payload) {

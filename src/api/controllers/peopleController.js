@@ -12,16 +12,9 @@ class PeopleController {
 	}
 
 	async list (req, res, next) {
+		const payload = req.query;
 		try {
-			const payload = req.query;
-			const peoples = await PeopleServices.list({
-				peoples_id: payload.id,
-				nome: payload.nome,
-				cpf: payload.cpf,
-				data_nascimento: payload.data_nascimento,
-				senha: payload.senha,
-				habilitado: payload.habilitado
-			});
+			const peoples = await PeopleServices.list(payload);
 			res.status(200).json(peoples);
 		} catch (error) {
 			next(error);

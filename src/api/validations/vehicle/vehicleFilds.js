@@ -1,51 +1,47 @@
-const Joi = require('foi').extend(require('@joi/date'));
-const BadRequest = require('../../errors/BadRequest');
+const Joi = require('joi').extend(require('@joi/date'));
 
+ 
 module.exports = async (req, res, next) => {
 	try {
 		const schema = Joi.object({
 			modelo: Joi.string()
-				.required()
-				.trim(),
-
+				.trim()
+				.required(),
+ 
 			cor: Joi.string()
-				.required()
-				.trim(),
-
+				.trim()
+				.required(),
+ 
 			ano: Joi.date()
 				.format('YYYY')
 				.min('1950-01-01')
 				.max('2022-12-31')
 				.required(),
-
+ 
 			acessorios: Joi.array()
 				.min(1)
 				.items(
 					Joi.object({
-						descrição: Joi.string()
-							.required()
+						descricao: Joi.string()
 							.trim()
+							.required()
 					})
 				)
 				.required(),
-
-			quantidadePessoas: Joi.number()
+ 
+			quantidadePassageiros: Joi.number()
 				.integer()
 				.required()
 		});
-
+ 
 		const { error } = await schema.validate(req.body, {
 			abortEarly: false,
 			allowUnknown: false
-
 		});
-
-		if (error) {
-			throw new BadRequest({ details: error.details.map((err) => err.message) });
-		}
-
-		next();
+ 
+		if (error) throw error;
+		return next();
 	} catch (error) {
-		next(error);
+		return res.status(400).json(error);
 	}
 };

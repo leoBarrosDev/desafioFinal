@@ -7,13 +7,7 @@ class VehicleServices {
 	}
 
 	async list (payload) {
-		const vehicles = await VehicleRepository.list({
-			vehicles_id: payload.id,
-			modelo: payload.modelo,
-			cor: payload.cor,
-			acessorios: payload.acessorios,
-			quantidadePassageiros: payload.quantidadePassageiros
-		});
+		const vehicles = await VehicleRepository.list(payload);
 		return vehicles;
 	}
 
