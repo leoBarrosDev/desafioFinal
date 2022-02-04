@@ -1,4 +1,4 @@
-const Joi = require('foi').extend(require('@joi/date'));
+const Joi = require('joi').extend(require('@joi/date'));
 const BadRequest = require('../../errors/BadRequest');
 
 module.exports = async (req, res, next) => {
