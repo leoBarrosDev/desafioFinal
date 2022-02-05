@@ -1,6 +1,6 @@
 const Joi = require('joi').extend(require('@joi/date'));
+const Errors = require('../errors/Errors');
 
-const BadRequest = require('../../api/errors/BadRequest');
 
 module.exports = async (req, res, next) => {
 	try {
@@ -15,10 +15,10 @@ module.exports = async (req, res, next) => {
 		if(error) throw error;
 
 		if(error){
-			throw new BadRequest({ details: error.details.map((err) => err.message)});
+			return Errors.notFound(res, error.message);
 		}
 		next();
 	} catch (error) {
-		next(error);
+		return Errors.badRequest(res. error.message);
 	}
 };

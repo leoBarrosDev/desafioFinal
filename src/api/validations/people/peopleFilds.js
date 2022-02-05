@@ -1,7 +1,9 @@
 const Joi = require('joi').extend(require('@joi/date'));
 const isCpf = require('../../utils/isCpf');
+const Errors = require('../../errors/Errors');
+const isAdult = require('../../utils/isAdult');
 
-const BadRequest = require('../../errors/BadRequest');
+
 
 module.exports = async (req, res, next) => {
 	try {
@@ -23,8 +25,12 @@ module.exports = async (req, res, next) => {
 			data_nascimento: Joi.date()
 				.required()
 				.format('DD/MM/YYYY')
-				.less('2004-01-01')
-				.max('now'),
+				.max('now')
+				.custom((value, help) => {
+					if (isAdult(new Date(value)) === false) {
+						return help.message('You cannot register, come back with a guardian');
+					}
+				}),				
 			email: Joi.string()
 				.required()
 				.email(),
@@ -40,12 +46,9 @@ module.exports = async (req, res, next) => {
 			abortEarly: false,
 			allowUnknown: false
 		});
-		if(error){
-			throw new BadRequest({details: error.details.map((err)=> err.message)});
-		}
-		next();
+		if (error) throw error;
+		return next();
 	} catch (error) {
-		next(error);
+		return Errors.badRequest(res, error.message);
 	}
-
 };
