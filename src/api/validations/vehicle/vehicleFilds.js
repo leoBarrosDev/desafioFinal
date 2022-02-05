@@ -1,4 +1,5 @@
 const Joi = require('joi').extend(require('@joi/date'));
+const Errors = require('../../errors/Errors');
 
  
 module.exports = async (req, res, next) => {
@@ -42,6 +43,6 @@ module.exports = async (req, res, next) => {
 		if (error) throw error;
 		return next();
 	} catch (error) {
-		return res.status(400).json(error);
+		return Errors.badRequest(res, error.message);
 	}
 };

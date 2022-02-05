@@ -1,6 +1,7 @@
 const Joi = require('joi').extend(require('@joi/date'));
 const isCpf = require('../../utils/isCpf');
-const BadRequest = require('../../errors/BadRequest');
+const Errors = require('../../errors/Errors');
+
 
 module.exports = async (req, res, next) => {
 	try {
@@ -19,7 +20,6 @@ module.exports = async (req, res, next) => {
 
 			data_nascimento: Joi.date()
 				.format('DD/MM/YYYY')
-				.less('2004-01-01')
 				.max('now'),
 
 			email: Joi.string()
@@ -32,11 +32,9 @@ module.exports = async (req, res, next) => {
 		});
 		const { error } = await schema.validate(req.query, { abortEarl: true });
 
-		if (error) {
-			throw new BadRequest({ details: error.details.map((err) => err.message) });
-		}
-		next();
+		if (error) throw error;
+		return next();
 	} catch (error) {
-		next(error);
+		return Errors.badRequest(res, error.message);
 	}
 };

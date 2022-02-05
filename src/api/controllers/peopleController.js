@@ -1,4 +1,5 @@
 const PeopleServices = require('../services/peopleServices');
+const Errors = require('../errors/Errors');
 
 class PeopleController {
 	async create (req, res) {
@@ -7,17 +8,17 @@ class PeopleController {
 			const result = await PeopleServices.create(newPeople);
 			return res.status(201).json(result);
 		} catch (error) {
-			res.status(500).json(error);
+			return Errors.badRequest(res, error.message);
 		}
 	}
 
-	async list (req, res, next) {
+	async list (req, res) {
 		const payload = req.query;
 		try {
 			const peoples = await PeopleServices.list(payload);
 			res.status(200).json(peoples);
 		} catch (error) {
-			next(error);
+			return Errors.badRequest(res, error.message);
 		}
 	}
 
@@ -28,7 +29,7 @@ class PeopleController {
 			const result = await PeopleServices.update(id, newPeople);
 			return res.status(200).json(result);
 		} catch (error) {
-			res.status(500).json(error);
+			return Errors.badRequest(res, error.message);
 		}
 	}
 
@@ -38,7 +39,7 @@ class PeopleController {
 			const result = await PeopleServices.findOnePeople(id);
 			return res.status(200).json(result);
 		} catch (error) {
-			res.status(500).json(error);
+			return Errors.badRequest(res, error.message);
 		}
 	}
 
@@ -48,7 +49,7 @@ class PeopleController {
 			await PeopleServices.remove(id);
 			res.status(204).end();
 		} catch (error) {
-			res.status(500).json(error);
+			return Errors.badRequest(res, error.message);
 		}
 	}
 }

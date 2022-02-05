@@ -1,5 +1,6 @@
 
 const VehicleServices = require('../services/vehicleServices');
+const Errors = require('../errors/Errors');
 
 class VehicleController {
 	async create (req, res) {
@@ -8,17 +9,17 @@ class VehicleController {
 			const result = await VehicleServices.create(newVehicle);
 			return res.status(201).json(result);
 		} catch (error) {
-			res.status(500).json(error);
+			return Errors.badRequest(res, error.message);
 		}
 	}
 
-	async list (req, res, next) {
+	async list (req, res) {
 		try {
 			const payload = req.query;
 			const vehicles = await VehicleServices.list(payload);
 			res.status(200).json(vehicles);
 		} catch (error) {
-			next(error);
+			return Errors.badRequest(res, error.message);
 		}
 	}
 
@@ -39,7 +40,7 @@ class VehicleController {
 			const result = await VehicleServices.findOneVehicle(id);
 			return res.status(200).json(result);
 		} catch (error) {
-			res.status(500).json(error);
+			return Errors.badRequest(res, error.message);
 		}
 	}
 
@@ -49,7 +50,7 @@ class VehicleController {
 			await VehicleServices.remove(id);
 			res.status(204).end();
 		} catch (error) {
-			res.status(500).json(error);
+			return Errors.badRequest(res, error.message);
 		}
 	}
 }
