@@ -1,0 +1,39 @@
+{
+  "dependencies": {
+    "@joi/date": "^2.1.0",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^14.3.2",
+    "express": "^4.17.2",
+    "joi": "^17.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.1.8",
+    "mongoose-paginate-v2": "^1.6.0"
+  },
+  "name": "desafiofinal",
+  "description": "API proposta no PB NodeJS da Compass Uol como desafio final",
+  "version": "1.0.0",
+  "main": "./src/server.js",
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.2.0",
+    "nodemon": "^2.0.15"
+  },
+  "scripts": {
+    "lint": "eslint . --fix",
+    "dev": "nodemon ./src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leoBarrosDev/desafioFinal.git"
+  },
+  "keywords": [],
+  "author": "Leandro Henrique de Barros Reis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leoBarrosDev/desafioFinal/issues"
+  },
+  "homepage": "https://github.com/leoBarrosDev/desafioFinal#readme"
+}
