@@ -1,0 +1,1190 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+      "title": "Desafio Final Compass",
+      "description": "A Compassolisa segue um seguimento de carros de luxo e semi luxo para alugar.",
+      "version": "0.0.1",
+      "termsOfService": "https://github.com/leoBarrosDev/desafioFinal/blob/main/LICENSE"
+    },
+    "externalDocs": {
+      "description": "Github Repository",
+      "url": "https://github.com/leoBarrosDev/desafioFinal"
+    },
+    "servers": [
+      {
+        "url": "http://localhost:3000/api/v1/",
+        "description": "Test API"
+      }
+    ],
+  
+    "tags": [
+      {
+        "name": "Vehicles",
+        "description": "Vehicle Routes"
+      },
+      {
+        "name": "Peoples",
+        "description": "People Routes"
+      },
+      {
+        "name": "Authentication",
+        "description": "People Authentication"
+      },
+      {
+        "name": "Rentals",
+        "description": "Rentals Routes"
+      }
+    ],
+    "paths": {
+      "/car": {
+        "get": {
+          "tags": [
+            "Vehicles"
+          ],
+          "summary": "Return all the cars",
+          "parameters": [
+            {
+              "name": "modelo",
+              "in": "query",
+              "schema": {
+                "type": "string"
+              },
+              "required": false
+            },
+            {
+              "name": "cor",
+              "in": "query",
+              "schema": {
+                "type": "string"
+              },
+              "required": false
+            },
+            {
+              "name": "ano",
+              "in": "query",
+              "schema": {
+                "type": "string"
+              },
+              "required": false
+            },
+            {
+              "name": "acessorios",
+              "in": "query",
+              "schema": {
+                "type": "string"
+              },
+              "required": false
+            },
+            {
+              "name": "quantidadePassageiros",
+              "in": "query",
+              "schema": {
+                "type": "number"
+              },
+              "required": false
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "The request succeeded.",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "Veiculos": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "modelo": {
+                              "type": "string"
+                            },
+                            "cor": {
+                              "type": "string"
+                            },
+                            "ano": {
+                              "type": "string"
+                            },
+                            "acessorios": {
+                              "type": "string"
+                            },
+                            "quantidadePassageiros": {
+                              "type": "number"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "The server can not find the requested resource.",
+              "content": {
+                "application/json": {
+                  "example": "Not found"
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "Vehicles"
+          ],
+          "summary": "Sign up a new car.",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "modelo": {
+                      "type": "string"
+                    },
+                    "cor": {
+                      "type": "string"
+                    },
+                    "ano": {
+                      "type": "string"
+                    },
+                    "acessorios": {
+                      "type": "string"
+                    },
+                    "quantidadePassageiros": {
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Created",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "moddelo": {
+                        "type": "string"
+                      },
+                      "cor": {
+                        "type": "string"
+                      },
+                      "ano": {
+                        "type": "string"
+                      },
+                      "acessorios": {
+                        "type": "string"
+                      },
+                      "quantidadePassageiros": {
+                        "type": "number"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad Request",
+              "content": {
+                "application/json": {
+                  "example": "The server could not understand the request due to invalid syntax."
+                }
+              }
+            }
+          }
+        }
+      },
+      "/car/{id}": {
+        "put": {
+          "tags": [
+            "Vehicles"
+          ],
+          "summary": "Update a car.",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "schema": {
+                "type": "string"
+              },
+              "required": true
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "_id": {
+                      "type": "string"
+                    },
+                    "moddelo": {
+                      "type": "string"
+                    },
+                    "cor": {
+                      "type": "string"
+                    },
+                    "ano": {
+                      "type": "string"
+                    },
+                    "acessorios": {
+                      "type": "string"
+                    },
+                    "quantidadePassageiros": {
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "The request succeeded.",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "moddelo": {
+                        "type": "string"
+                      },
+                      "cor": {
+                        "type": "string"
+                      },
+                      "ano": {
+                        "type": "string"
+                      },
+                      "acessorios": {
+                        "type": "string"
+                      },
+                      "quantidadePassageiros": {
+                        "type": "number"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad Request",
+              "content": {
+                "application/json": {
+                  "example": "The server could not understand the request due to invalid syntax."
+                }
+              }
+            },
+            "404": {
+              "description": "Not found",
+              "content": {
+                "application/json": {
+                  "example": "The server can not find the requested resourcer."
+                }
+              }
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "Vehicles"
+          ],
+          "summary": "Delete a listed car.",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "schema": {
+                "type": "string"
+              },
+              "required": true
+            }
+          ],
+          "responses": {
+            "204": {
+              "description": "deleted"
+            },
+            "400": {
+              "description": "Bad Request",
+              "content": {
+                "application/json": {
+                  "example": "The server could not understand the request due to invalid syntax."
+                }
+              }
+            },
+            "404": {
+              "description": "Not found",
+              "content": {
+                "application/json": {
+                  "example": "The server can not find the requested resource."
+                }
+              }
+            }
+          }
+        }
+      },
+      "/people": {
+        "post": {
+          "tags": [
+            "Peoples"
+          ],
+          "summary": "Sign up a new Person",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "nome": {
+                      "type": "string"
+                    },
+                    "cpf": {
+                      "type": "string"
+                    },
+                    "data_nascimento": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string"
+                    },
+                    "senha": {
+                      "type": "string"
+                    },
+                    "habilitado": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Created",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "nome": {
+                        "type": "string"
+                      },
+                      "cpf": {
+                        "type": "string"
+                      },
+                      "data_nascimento": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string"
+                      },
+                      "senha": {
+                        "type": "string"
+                      },
+                      "habilitado": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad Request",
+              "content": {
+                "application/json": {
+                  "example": "The server could not understand the request due to invalid syntax."
+                }
+              }
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "Peoples"
+          ],
+          "summary": "Return all the Users",
+          "parameters": [
+            {
+              "name": "nome",
+              "in": "query",
+              "schema": {
+                "type": "string"
+              },
+              "required": false
+            },
+            {
+              "name": "people_id",
+              "in": "query",
+              "schema": {
+                "type": "string"
+              },
+              "required": false
+            },
+            {
+              "name": "cpf",
+              "in": "query",
+              "schema": {
+                "type": "string"
+              },
+              "required": false
+            },
+            {
+              "name": "data_nascimento",
+              "in": "query",
+              "schema": {
+                "type": "number"
+              },
+              "required": false
+            },
+            {
+              "name": "email",
+              "in": "query",
+              "schema": {
+                "type": "string"
+              },
+              "required": false
+            },
+            {
+              "name": "senha",
+              "in": "query",
+              "schema": {
+                "type": "string"
+              },
+              "required": false
+            },
+            {
+              "name": "habilitado",
+              "in": "query",
+              "schema": {
+                "type": "string"
+              },
+              "required": false
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "Pessoas": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "nome": {
+                              "type": "string"
+                            },
+                            "cpf": {
+                              "type": "string"
+                            },
+                            "data_nascimento": {
+                              "type": "number"
+                            },
+                            "email": {
+                              "type": "string"
+                            },
+                            "senha": {
+                              "type": "string"
+                            },
+                            "habilitado": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Not Found",
+              "content": {
+                "application/json": {
+                  "example": "The server can not find the requested resource."
+                }
+              }
+            }
+          }
+        }
+      },
+      "/people/{id}": {
+        "put": {
+          "tags": [
+            "Peoples"
+          ],
+          "summary": "Update a User.",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "schema": {
+                "type": "string"
+              },
+              "required": true
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "nome": {
+                      "type": "string"
+                    },
+                    "cpf": {
+                      "type": "string"
+                    },
+                    "data_nascimento": {
+                      "type": "number"
+                    },
+                    "email": {
+                      "type": "string"
+                    },
+                    "senha": {
+                      "type": "string"
+                    },
+                    "habilitado": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "The request succeeded.",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "nome": {
+                        "type": "string"
+                      },
+                      "people_id": {
+                        "type": "string"
+                      },
+                      "cpf": {
+                        "type": "string"
+                      },
+                      "data_nascimento": {
+                        "type": "number"
+                      },
+                      "email": {
+                        "type": "string"
+                      },
+                      "senha": {
+                        "type": "string"
+                      },
+                      "habilitado": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad Request",
+              "content": {
+                "application/json": {
+                  "example": "The server could not understand the request due to invalid syntax."
+                }
+              }
+            },
+            "404": {
+              "description": "Not Found",
+              "content": {
+                "application/json": {
+                  "example": "The server can not find the requested resource."
+                }
+              }
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "Peoples"
+          ],
+          "summary": "Delete a User.",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "schema": {
+                "type": "string"
+              },
+              "required": true
+            }
+          ],
+          "responses": {
+            "204": {
+              "description": "successfully deleted"
+            },
+            "400": {
+              "description": "Bad Request",
+              "content": {
+                "application/json": {
+                  "example": "The server could not understand the request due to invalid syntax."
+                }
+              }
+            },
+            "404": {
+              "description": "Not Found",
+              "content": {
+                "application/json": {
+                  "example": "The server can not find the requested resource."
+                }
+              }
+            }
+          }
+        }
+      },
+      "/authentication": {
+        "post": {
+          "tags": [
+            "Authentication"
+          ],
+          "summary": "Authenticate an Email",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "email": {
+                      "type": "string"
+                    },
+                    "senha": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Created",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "nome": {
+                        "type": "string"
+                      },
+                      "cpf": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string"
+                      },
+                      "habilitado": {
+                        "type": "string"
+                      },
+                      "token": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Not Found",
+              "content": {
+                "application/json": {
+                  "example": "The server can not find the requested resource."
+                }
+              }
+            }
+          }
+        }
+      },
+      "/rental": {
+        "post": {
+          "tags": [
+            "Rentals"
+          ],
+          "summary": "Register a Rental Company consuming ViaCep external api",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "nome": {
+                      "type": "string",
+                      "example": "CompassoLisa"
+                    },
+                    "cnpj": {
+                      "type": "string",
+                      "example": 7654824000124
+                    },
+                    "atividades": {
+                      "type": "string",
+                      "example": "Aluga Veiculos"
+                    },
+                    "endereco": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "cep": {
+                            "type": "string",
+                            "example": 99010051
+                          },
+                          "number": {
+                            "type": "string",
+                            "example": 132
+                          },
+                          "isFilial": {
+                            "type": "boolean",
+                            "example": false
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Created",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "_id": {
+                        "type": "number"
+                      },
+                      "nome": {
+                        "type": "string"
+                      },
+                      "cnpj": {
+                        "type": "string"
+                      },
+                      "atividades": {
+                        "type": "string"
+                      },
+                      "endereco": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "cep": {
+                              "type": "string"
+                            },
+                            "logradouro": {
+                              "type": "string"
+                            },
+                            "complemento": {
+                              "type": "string"
+                            },
+                            "bairro": {
+                              "type": "string"
+                            },
+                            "number": {
+                              "type": "number"
+                            },
+                            "localidade": {
+                              "type": "string"
+                            },
+                            "uf": {
+                              "type": "string"
+                            },
+                            "isFilial": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad Request"
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "Rentals"
+          ],
+          "parameters": [
+            {
+              "name": "nome",
+              "in": "query",
+              "description": "rental company name",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "cnpj",
+              "in": "query",
+              "description": "CNPJ of the rental company",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "atividades",
+              "in": "query",
+              "description": "Services provided by the lessor",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "cep",
+              "in": "query",
+              "description": "Rental cep code",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "logradouro",
+              "in": "query",
+              "description": "Location of the rental company",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "isFilial",
+              "in": "query",
+              "description": "If the rental company is a parent company or branch",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "limit",
+              "in": "query",
+              "description": "page result limit",
+              "schema": {
+                "type": "number"
+              }
+            },
+            {
+              "name": "total",
+              "in": "query",
+              "description": "total pages",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "offset",
+              "in": "query",
+              "description": "pages skipped after offset",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "offsets",
+              "in": "query",
+              "description": "first result skipped pages",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "summary": "Consult all rental companies, or by parameters",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "_id": {
+                        "type": "number"
+                      },
+                      "nome": {
+                        "type": "string"
+                      },
+                      "cnpj": {
+                        "type": "string"
+                      },
+                      "atividades": {
+                        "type": "string"
+                      },
+                      "endereco": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "cep": {
+                              "type": "string"
+                            },
+                            "logradouro": {
+                              "type": "string"
+                            },
+                            "complemento": {
+                              "type": "string"
+                            },
+                            "bairro": {
+                              "type": "string"
+                            },
+                            "number": {
+                              "type": "number"
+                            },
+                            "localidade": {
+                              "type": "string"
+                            },
+                            "uf": {
+                              "type": "string"
+                            },
+                            "isFilial": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad Request"
+            }
+          }
+        }
+      },
+      "/rental/{id}": {
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "get": {
+          "tags": [
+            "Rentals"
+          ],
+          "summary": "Query rental by ID",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "_id": {
+                        "type": "number"
+                      },
+                      "nome": {
+                        "type": "string"
+                      },
+                      "cnpj": {
+                        "type": "string"
+                      },
+                      "atividades": {
+                        "type": "string"
+                      },
+                      "endereco": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "cep": {
+                              "type": "string"
+                            },
+                            "logradouro": {
+                              "type": "string"
+                            },
+                            "complemento": {
+                              "type": "string"
+                            },
+                            "bairro": {
+                              "type": "string"
+                            },
+                            "number": {
+                              "type": "number"
+                            },
+                            "localidade": {
+                              "type": "string"
+                            },
+                            "uf": {
+                              "type": "string"
+                            },
+                            "isFilial": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad Request"
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "Rentals"
+          ],
+          "summary": "Change the properties of a rental company found by Id",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "nome": {
+                      "type": "string",
+                      "example": "CompassoLisa"
+                    },
+                    "cnpj": {
+                      "type": "string",
+                      "example": 7654824000124
+                    },
+                    "atividades": {
+                      "type": "string",
+                      "example": "Aluga Veiculos"
+                    },
+                    "endereco": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "cep": {
+                            "type": "string",
+                            "example": 99010051
+                          },
+                          "number": {
+                            "type": "string",
+                            "example": 132
+                          },
+                          "isFilial": {
+                            "type": "boolean",
+                            "example": true
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Sucesso",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "_id": {
+                        "type": "number"
+                      },
+                      "nome": {
+                        "type": "string"
+                      },
+                      "cnpj": {
+                        "type": "string"
+                      },
+                      "atividades": {
+                        "type": "string"
+                      },
+                      "endereco": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "cep": {
+                              "type": "string"
+                            },
+                            "logradouro": {
+                              "type": "string"
+                            },
+                            "complemento": {
+                              "type": "string"
+                            },
+                            "bairro": {
+                              "type": "string"
+                            },
+                            "number": {
+                              "type": "number"
+                            },
+                            "localidade": {
+                              "type": "string"
+                            },
+                            "uf": {
+                              "type": "string"
+                            },
+                            "isFilial": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad Request"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "Rentals"
+          ],
+          "summary": "Delete a rental store found by Id",
+          "responses": {
+            "204": {
+              "description": "No Content"
+            },
+            "400": {
+              "description": "Bad Request"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      }
+      
+    }
+  }
