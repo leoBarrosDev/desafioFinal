@@ -25,5 +25,7 @@
             "error",
             "always"
         ]
-    }
+    },
+    
+    "jest": true
 }
