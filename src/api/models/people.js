@@ -10,6 +10,7 @@ const PeopleSchema = new Schema({
 	},
 	cpf: {
 		type: String,
+		unique: true,
 		require: true
 
 	},
@@ -19,6 +20,7 @@ const PeopleSchema = new Schema({
 	},
 	email: {
 		type: String,
+		unique: true,
 		require: true
 	},
 	senha: {
