@@ -1,5 +1,8 @@
 const RentalController = require('../../api/controllers/rentalController');
+const authGuard = require('../../api/validations/auth/authGuard')
 const router = require('express').Router();
+
+router.use('../../api/validations/auth/authGuard', authGuard);
 
 router
 	.post('/rental', RentalController.create )
