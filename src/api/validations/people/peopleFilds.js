@@ -16,7 +16,8 @@ module.exports = async (req, res, next) => {
 				.min(11)
 				.max(11)
 				.custom((value, help) => {
-					if (isCpf(value)) {
+					if (!isCpf(value)) {
+						console.log('cpf invalido')
 						return help.message(`O CPF ${value} é inválido, tente novamente`);
 					}
 					return true;
