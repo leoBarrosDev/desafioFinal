@@ -1,7 +1,7 @@
 function isValid(cpf){
 	var numeros, digitos, soma, i, resultado, digitos_iguais;
 	digitos_iguais = 1;
-	if (cpf.length < 11)
+		if (cpf.length !== 11)
 		  return false;
 	for (i = 0; i < cpf.length - 1; i++)
 		  if (cpf.charAt(i) != cpf.charAt(i + 1))

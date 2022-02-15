@@ -1,5 +1,6 @@
 const VehicleRepository = require('../repositories/vehicleRepository');
 
+
 class VehicleServices {
 	async create (vehicle) {
 		const result = await VehicleRepository.create(vehicle);
@@ -25,6 +26,12 @@ class VehicleServices {
 	async remove (id) {
 		return await VehicleRepository.remove(id);
 	}
+
+	async updateAccessory(id, acessorioId, payload){
+		const result = await VehicleRepository.updateAccessory(id, acessorioId, payload);
+		return result;
+	}
+
 }
 
 module.exports = new VehicleServices();

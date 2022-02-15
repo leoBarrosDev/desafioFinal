@@ -1,6 +1,7 @@
 
 const VehicleServices = require('../services/vehicleServices');
 const Errors = require('../errors/Errors');
+const res = require('express/lib/response');
 
 class VehicleController {
 	async create (req, res) {
@@ -53,6 +54,20 @@ class VehicleController {
 			return Errors.badRequest(res, error.message);
 		}
 	}
+
+	async updateAccessory(req, res){
+		const { id, acessorioId } = req.params;
+		const payload = req.body;
+
+		try {
+			const result = await VehicleServices.updateAccessory(id, acessorioId, payload);
+
+			return res.status(200).json(result);
+		} catch (error) {
+			return Errors.badRequest(res, error.message);
+		}
+	}
+
 }
 
 module.exports = new VehicleController();

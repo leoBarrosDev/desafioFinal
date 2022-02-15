@@ -37,5 +37,14 @@ class VehicleRepository {
 	async remove (id) {
 		return schema.findByIdAndDelete(id);
 	}
+
+	async updateAccessory (id, acessorioId, payload){
+		return schema.findByIdAndUpdate(
+			id,
+			{$set: {'acessorios.$[none].descricao': payload.descricao}},
+			{arrayFilters: [{'none._id': acessorioId}]}
+		)
+	}
+
 }
 module.exports = new VehicleRepository();
