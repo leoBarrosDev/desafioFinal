@@ -13,6 +13,6 @@ router
 	.put('/car/:id', authGuard, isId, vehicleFilds, VehicleController.update)
 	.get('/car/:id', authGuard, isId, VehicleController.findOne)
 	.delete('/car/:id', authGuard, isId, VehicleController.remove)
-	.patch('/car/:id/acessorios/acessorioId', authGuard, VehicleController.updateAccessory)
+	.patch('/car/:id/acessorios/:acessorioId', authGuard, VehicleController.updateAccessory)
 
 module.exports = router;
