@@ -1,7 +1,7 @@
 const schema = require('../../api/models/people');
 const bcrypt = require('bcryptjs');
  
-const tokenGenerate = require('../../api/utils/tokenGenerate');
+const tokenGenerator = require('../../api/utils/tokenGenerator');
  
 class AuthenticateController {
 	async authenticate (req, res) {
@@ -20,7 +20,7 @@ class AuthenticateController {
  
 		res.send({
 			people,
-			token: tokenGenerate({ id: people.id })
+			token: tokenGenerator({ id: people.id })
 		});
 	}
 }

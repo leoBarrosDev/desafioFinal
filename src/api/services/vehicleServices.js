@@ -2,17 +2,17 @@ const VehicleRepository = require('../repositories/vehicleRepository');
 
 
 class VehicleServices {
-	async create (vehicle) {
+	async createVehicle (vehicle) {
 		const result = await VehicleRepository.create(vehicle);
 		return result;
 	}
 
-	async list (payload) {
+	async listVehicle (payload) {
 		const vehicles = await VehicleRepository.list(payload);
 		return vehicles;
 	}
 
-	async update (id, payload) {
+	async updateVehicle (id, payload) {
 		const result = await VehicleRepository.update(id, payload);
 		return result;
 	}
@@ -23,11 +23,11 @@ class VehicleServices {
 		return result;
 	}
 
-	async remove (id) {
+	async removeVehicle (id) {
 		return await VehicleRepository.remove(id);
 	}
 
-	async updateAccessory(id, acessorioId, payload){
+	async updateAccessoryVehicle(id, acessorioId, payload){
 		const result = await VehicleRepository.updateAccessory(id, acessorioId, payload);
 		return result;
 	}

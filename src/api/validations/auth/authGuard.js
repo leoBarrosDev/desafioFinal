@@ -1,4 +1,4 @@
-const validateToken = require('../../utils/validateToken')
+const tokenValidator = require('../../utils/tokenValidator')
 
 
 module.exports = function authGuard(req, res, next) {
@@ -22,7 +22,7 @@ module.exports = function authGuard(req, res, next) {
 
     try {
 
-        const payload = validateToken(token)
+        const payload = tokenValidator(token)
         req.id = payload.params.id
 
         next()

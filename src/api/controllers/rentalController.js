@@ -4,41 +4,41 @@ const Errors = require('../errors/Errors');
 
 class RentalController {
 
-	async create(req, res) {
+	async createRental(req, res) {
 		try {
 			const result = await RentalService.create(req.body);
 			return res.status(201).json(result);
 
 		} catch (error) {
 
-			res.status(500).json(error);
+			return res.status(500).json(error);
 
 		}
 
 	}
 
-	async list (req, res){
+	async listRental (req, res){
 		try {
 			const payload = req.params;
 			const rentals = await RentalService.list(payload);
-			res.status(200).json(rentals);
+			return res.status(200).json(rentals);
 		} catch (error) {
 			return Errors.badRequest(res, error.message);
 		}
 	}
 
-	async update (req, res){
+	async updateRental (req, res){
 		const { id } = req.params;
 		const newRental = req.body;
 		try {
 			const result = await RentalService.update(id, newRental);
-			res.status(200).json(result);
+			return res.status(200).json(result);
 		} catch (error) {
-			res.status(500).json(error);
+			return res.status(500).json(error);
 		}
 	}
 
-	async findOne (req, res){
+	async findOneRental (req, res){
 		const { id } = req.params;
 		try {
 			const result = await RentalService.findOneRental(id);
@@ -48,11 +48,11 @@ class RentalController {
 		}
 	}
 
-	async remove (req, res){
+	async removeRental (req, res){
 		const { id } = req.params;
 		try {
 			await RentalService.remove(id);
-			res.status(204).end();
+			return res.status(204).end();
 		} catch (error) {
 			return Errors.badRequest(res, error.message);
 		}

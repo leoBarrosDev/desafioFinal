@@ -1,7 +1,7 @@
 const RentalRepository = require('../repositories/rentalRepository');
 
 class RentalServices{
-	async create(payload, fields){
+	async createRental(payload, fields){
 		let count = 0;
 		do {
 			const ceps = payload.endereco;
@@ -25,12 +25,12 @@ class RentalServices{
 		
 	}
 
-	async list (payload){
+	async listRental (payload){
 		const rentals = await RentalRepository.list(payload);
 		return rentals;
 	}
 
-	async update (id, payload){
+	async updateRental (id, payload){
 		const result = await RentalRepository.update(id, payload);
 		return result;
 	}
@@ -40,7 +40,7 @@ class RentalServices{
 		return result;
 	}
 
-	async remove (id){
+	async removeRental (id){
 		return await RentalRepository.remove(id);
 	}
 }

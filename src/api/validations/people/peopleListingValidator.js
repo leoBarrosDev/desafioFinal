@@ -1,5 +1,5 @@
 const Joi = require('joi').extend(require('@joi/date'));
-const isCpf = require('../../utils/isCpf');
+const cpfValidator = require('../../utils/cpfValidator');
 const Errors = require('../../errors/Errors');
 
 
@@ -12,7 +12,7 @@ module.exports = async (req, res, next) => {
 				.min(11)
 				.max(11)
 				.custom((value, help) => {
-					if (isCpf(value)) {
+					if (cpfValidator(value)) {
 						return help.message(`O CPF ${value} não é válido`);
 					}
 					return true;

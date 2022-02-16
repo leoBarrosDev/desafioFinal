@@ -2,17 +2,17 @@
 const PeopleRepository = require('../repositories/peopleRepository');
 
 class PeopleServices {
-	async create (people) {
+	async createPeople (people) {
 		const result = await PeopleRepository.create(people);
 		return result;
 	}
 
-	async list (payload) {
+	async listPeople (payload) {
 		const peoples = await PeopleRepository.list(payload);
 		return peoples;
 	}
 
-	async update (id, payload) {
+	async updatePeople (id, payload) {
 		const result = await PeopleRepository.update(id, payload);
 		return result;
 	}
@@ -23,7 +23,7 @@ class PeopleServices {
 		return result;
 	}
 
-	async remove (id) {
+	async removePeople (id) {
 		return await PeopleRepository.remove(id);
 	}
 }

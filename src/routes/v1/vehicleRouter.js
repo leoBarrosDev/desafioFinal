@@ -3,16 +3,16 @@ const router = require('express').Router();
 const VehicleController = require('../../api/controllers/vehicleController');
 const authGuard = require('../../api/validations/auth/authGuard');
 
-const vehicleFilds = require('../../api/validations/vehicle/vehicleFilds');
-const list = require('../../api/validations/vehicle/listVehicles');
-const isId = require('../../api/validations/isId');
+const vehicleFildValidator = require('../../api/validations/vehicle/vehicleFildValidator');
+const vehicleListingValidator = require('../../api/validations/vehicle/vehicleListingValidator');
+const idValidator = require('../../api/validations/idValidator');
 
 router
-	.post('/car', authGuard, vehicleFilds, VehicleController.create)
-	.get('/car', authGuard, list, VehicleController.list)
-	.put('/car/:id', authGuard, isId, vehicleFilds, VehicleController.update)
-	.get('/car/:id', authGuard, isId, VehicleController.findOne)
-	.delete('/car/:id', authGuard, isId, VehicleController.remove)
-	.patch('/car/:id/acessorios/:acessorioId', authGuard, VehicleController.updateAccessory)
+	.post('/car', authGuard, vehicleFildValidator, VehicleController.createVehicle)
+	.get('/car', authGuard, vehicleListingValidator, VehicleController.listVehicle)
+	.put('/car/:id', authGuard, idValidator, vehicleFildValidator, VehicleController.updateVehicle)
+	.get('/car/:id', authGuard, idValidator, VehicleController.findOneVehicle)
+	.delete('/car/:id', authGuard, idValidator, VehicleController.removeVehicle)
+	.patch('/car/:id/acessorios/:acessorioId', authGuard, VehicleController.updateAccessoryVehicle)
 
 module.exports = router;

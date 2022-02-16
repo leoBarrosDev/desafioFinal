@@ -1,11 +1,11 @@
 const schema = require('../models/vehicle');
 
 class VehicleRepository {
-	async create (vehicle) {
+	async createVehicle (vehicle) {
 		return schema.create(vehicle);
 	}
 
-	async list (payload) {
+	async listVehicle (payload) {
 		const paginatedFields = {
 			totalDocs: 'total',
 			docs: 'Veiculos',
@@ -26,7 +26,7 @@ class VehicleRepository {
 		return schema.paginate(payload, options, {});
 	}
 
-	async update (id, payload) {
+	async updateVehicle (id, payload) {
 		return schema.findByIdAndUpdate(id, payload, { new: true });
 	}
 
@@ -34,11 +34,11 @@ class VehicleRepository {
 		return schema.findById(id);
 	}
 
-	async remove (id) {
+	async removeVehicle (id) {
 		return schema.findByIdAndDelete(id);
 	}
 
-	async updateAccessory (id, acessorioId, payload){
+	async updateAccessoryVehicle (id, acessorioId, payload){
 		return schema.findByIdAndUpdate(
 			id,
 			{$set: {'acessorios.$[none].descricao': payload.descricao}},

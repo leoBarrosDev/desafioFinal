@@ -1,11 +1,11 @@
 const schema = require('../models/people');
 
 class PeopleRepository {
-	async create (people) {
+	async createPeople (people) {
 		return schema.create(people);
 	}
 
-	async list (payload) {
+	async listPeople (payload) {
 		const paginatedFields = {
 			totalDocs: 'total',
 			docs: 'People',
@@ -26,7 +26,7 @@ class PeopleRepository {
 		return schema.paginate(payload, options, {});
 	}
 
-	async update (id, payload) {
+	async updatePeople (id, payload) {
 		return schema.findByIdAndUpdate(id, payload, { new: true });
 	}
 
@@ -34,7 +34,7 @@ class PeopleRepository {
 		return schema.findById(id);
 	}
 
-	async remove (id) {
+	async removePeople (id) {
 		return schema.findByIdAndDelete(id);
 	}
 }

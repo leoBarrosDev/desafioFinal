@@ -2,7 +2,7 @@ const PeopleServices = require('../services/peopleServices');
 const Errors = require('../errors/Errors');
 
 class PeopleController {
-	async create (req, res) {
+	async createPeople (req, res) {
 		const newPeople = req.body;
 		try {
 			const result = await PeopleServices.create(newPeople);
@@ -12,17 +12,17 @@ class PeopleController {
 		}
 	}
 
-	async list (req, res) {
+	async listPeople (req, res) {
 		const payload = req.query;
 		try {
 			const peoples = await PeopleServices.list(payload);
-			res.status(200).json(peoples);
+			return res.status(200).json(peoples);
 		} catch (error) {
 			return Errors.badRequest(res, error.message);
 		}
 	}
 
-	async update (req, res) {
+	async updatePeople (req, res) {
 		const { id } = req.params;
 		const newPeople = req.body;
 		try {
@@ -33,7 +33,7 @@ class PeopleController {
 		}
 	}
 
-	async findOne (req, res) {
+	async findOnePeople (req, res) {
 		const { id } = req.params;
 		try {
 			const result = await PeopleServices.findOnePeople(id);
@@ -43,11 +43,11 @@ class PeopleController {
 		}
 	}
 
-	async remove (req, res) {
+	async removePeople (req, res) {
 		const { id } = req.params;
 		try {
 			await PeopleServices.remove(id);
-			res.status(204).end();
+			return res.status(204).end();
 		} catch (error) {
 			return Errors.badRequest(res, error.message);
 		}

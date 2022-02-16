@@ -3,11 +3,11 @@ const authGuard = require('../../api/validations/auth/authGuard');
 const router = require('express').Router()
 
 router
-	.post('/rental', authGuard, RentalController.create )
-	.get('/rental', authGuard, RentalController.list)
-	.put('/rental/:id', authGuard, RentalController.update)
-	.get('/rental/:id', authGuard, RentalController.findOne)
-	.delete('/rental/:id', authGuard, RentalController.remove);
+	.post('/rental', authGuard, RentalController.createRental )
+	.get('/rental', authGuard, RentalController.listRental)
+	.put('/rental/:id', authGuard, RentalController.updateRental)
+	.get('/rental/:id', authGuard, RentalController.findOneRental)
+	.delete('/rental/:id', authGuard, RentalController.removeRental);
 
 module.exports = router;
 

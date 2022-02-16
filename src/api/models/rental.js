@@ -22,9 +22,9 @@ const schema = new Schema({
 			cep: { type: String, required: true },
 			number: { type: String, required: true },
 			complemento: { type: String, required: false },
-			bairro: { type: String, required: false},
-			logradouro: { type: String, required: false},
-			uf: { type: String, required: false },
+			bairro: { type: String, required: true},
+			logradouro: { type: String, required: true},
+			uf: { type: String, required: true },
 			isFilial: { type: Boolean, required: true },
 			_id: false
 		}

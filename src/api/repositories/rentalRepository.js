@@ -3,7 +3,7 @@ const axios = require('axios');
 
 class RentalRepository{
 
-	async create(payload){
+	async createRental(payload){
 		return await schema.create(payload);
 	}
 
@@ -13,7 +13,7 @@ class RentalRepository{
 		return result.data;
 	}
 
-	async list(payload){
+	async listRental(payload){
 		const paginatedFields = {
 			totalDocs: 'total',
 			docs: 'Veiculos',
@@ -34,7 +34,7 @@ class RentalRepository{
 		return schema.paginate(payload, options, {});
 	}
 
-	async update (id, payload){
+	async updateRental (id, payload){
 		return schema.findByIdAndUpdate(id, payload, {new: true});
 	}
 
@@ -42,7 +42,7 @@ class RentalRepository{
 		return schema.findById(id);
 	}
 
-	async remove(id){
+	async removeRental(id){
 		return schema.findByIdAndDelete(id);
 	}
 

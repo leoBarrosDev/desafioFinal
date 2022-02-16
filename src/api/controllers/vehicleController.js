@@ -4,7 +4,7 @@ const Errors = require('../errors/Errors');
 const res = require('express/lib/response');
 
 class VehicleController {
-	async create (req, res) {
+	async createVehicle (req, res) {
 		const newVehicle = req.body;
 		try {
 			const result = await VehicleServices.create(newVehicle);
@@ -14,28 +14,28 @@ class VehicleController {
 		}
 	}
 
-	async list (req, res) {
+	async listVehicle (req, res) {
 		try {
 			const payload = req.query;
 			const vehicles = await VehicleServices.list(payload);
-			res.status(200).json(vehicles);
+			return res.status(200).json(vehicles);
 		} catch (error) {
 			return Errors.badRequest(res, error.message);
 		}
 	}
 
-	async update (req, res) {
+	async updateVehicle (req, res) {
 		const { id } = req.params;
 		const newVehicle = req.body;
 		try {
 			const result = await VehicleServices.update(id, newVehicle);
 			return res.status(200).json(result);
 		} catch (error) {
-			res.status(500).json(error);
+			return res.status(500).json(error);
 		}
 	}
 
-	async findOne (req, res) {
+	async findOneVehicle (req, res) {
 		const { id } = req.params;
 		try {
 			const result = await VehicleServices.findOneVehicle(id);
@@ -45,17 +45,17 @@ class VehicleController {
 		}
 	}
 
-	async remove (req, res) {
+	async removeVehicle (req, res) {
 		const { id } = req.params;
 		try {
 			await VehicleServices.remove(id);
-			res.status(204).end();
+			return res.status(204).end();
 		} catch (error) {
 			return Errors.badRequest(res, error.message);
 		}
 	}
 
-	async updateAccessory(req, res){
+	async updateAccessoryVehicle(req, res){
 		const { id, acessorioId } = req.params;
 		const payload = req.body;
 
