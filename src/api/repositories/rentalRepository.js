@@ -2,8 +2,8 @@ const axios = require('axios');
 const schema = require('../models/rental');
 
 class RentalRepository {
-  async createRental(payload) {
-    return schema.create(payload);
+  async createRental(payload, fields) {
+    return schema.create(payload, fields);
   }
 
   async searchCep(cep) {

@@ -1,26 +1,22 @@
 const RentalRepository = require('../repositories/rentalRepository');
 
 class RentalServices {
-  async createRental(payload, fields) {
+  async createRental(payload, data) {
     let count = 0;
     do {
-      const ceps = payload.endereco;
-      const address = ceps[count];
-      // eslint-disable-next-line no-shadow
-      const fields = RentalRepository.searchCep(address.cep);
-      const { cep, logradouro, complemento, bairro, localidade, uf } = fields;
-
-      address.cep = cep;
-      address.logradouro = logradouro;
-      address.complemento = complemento;
-      address.bairro = bairro;
-      address.localidade = localidade;
-      address.uf = uf;
-
-      count += 1;
+      const Ceps = payload.endereco;
+      const adress = Ceps[count];
+      const filds = await RentalRepository.searchCep(adress.cep);
+      const { cep, logradouro, complemento, bairro, localidade, uf } = filds;
+      adress.cep = cep;
+      adress.logradouro = logradouro;
+      adress.complemento = complemento;
+      adress.bairro = bairro;
+      adress.localidade = localidade;
+      adress.uf = uf;
+      count++;
     } while (count < payload.endereco.length);
-
-    const result = await RentalRepository.create(payload, fields);
+    const result = await RentalRepository.createRental(payload, data);
     return result;
   }
 
