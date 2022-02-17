@@ -1,35 +1,29 @@
-const tokenValidator = require('../../utils/tokenValidator')
+const tokenValidator = require('../../utils/tokenValidator');
 
-
+// eslint-disable-next-line consistent-return
 module.exports = function authGuard(req, res, next) {
+  const { authorization } = req.headers;
 
-    const authorization = req.headers['authorization']
+  if (!authorization) {
+    return res.status(401).send('unauthorized');
+  }
 
-    if (!authorization) {
-        return res.status(401).send('unauthorized')
-    }
+  const [bearer, token] = authorization.split(' ');
 
-    const [bearer, token] = authorization.split(' ')
+  if (bearer.toLowerCase() !== 'bearer') {
+    return res.status(401).send('invalid token type');
+  }
 
-    if(bearer.toLowerCase() !== 'bearer'){
-        return res.status(401).send('invalid token type')
-    }
+  if (!token) {
+    return res.status(401).send('unauthorized');
+  }
 
-    if (!token) {
-        return res.status(401).send('unauthorized')
-    }
+  try {
+    const payload = tokenValidator(token);
+    req.id = payload.params.id;
 
-
-    try {
-
-        const payload = tokenValidator(token)
-        req.id = payload.params.id
-
-        next()
-    } catch (error) {
-        return res.status(401).send(`unauthorized: ${error.message}`)
-    }
-
-
-
-}
+    next();
+  } catch (error) {
+    return res.status(401).send(`unauthorized: ${error.message}`);
+  }
+};
