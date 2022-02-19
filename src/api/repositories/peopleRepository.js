@@ -8,7 +8,7 @@ class PeopleRepository {
   async listPeople(payload) {
     const paginatedFields = {
       totalDocs: 'total',
-      docs: 'People',
+      docs: 'Pessoas',
       page: 'offset',
       nextPage: false,
       prevPage: false,

@@ -15,7 +15,7 @@ class RentalRepository {
   async listRental(payload) {
     const paginatedFields = {
       totalDocs: 'total',
-      docs: 'Veiculos',
+      docs: 'Locadoras',
       page: 'offset',
       nextPage: false,
       prevPage: false,
