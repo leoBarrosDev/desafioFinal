@@ -16,6 +16,22 @@
         "description": "Test API"
       }
     ],
+
+    "security": [
+      {
+        "BearerAuth": []
+      }
+    ],
+
+    "components": {
+      "securitySchemes":{
+        "BearerAuth":{
+          "type": "http",
+          "scheme": "bearer"
+        }
+      }
+    },
+    
   
     "tags": [
       {
@@ -35,9 +51,11 @@
         "description": "Rentals Routes"
       }
     ],
+        
     "paths": {
       "/car": {
         "get": {
+         
           "tags": [
             "Vehicles"
           ],
@@ -653,7 +671,7 @@
           }
         }
       },
-      "/authentication": {
+      "/authenticate": {
         "post": {
           "tags": [
             "Authentication"
