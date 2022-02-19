@@ -1,5 +1,5 @@
-// eslint-disable-next-line import/no-unresolved
 const faker = require('faker-br');
+// const { it } = require('faker-br/lib/locales');
 const request = require('./request');
 
 function createUser() {
