@@ -1,14 +1,21 @@
-const schema = require('../models/people');
+const axios = require('axios');
+const schema = require('../models/rental');
 
-class PeopleRepository {
-  async createPeople(people) {
-    return schema.create(people);
+class RentalRepository {
+  async createRental(payload, fields) {
+    return schema.create(payload, fields);
   }
 
-  async listPeople(payload) {
+  async searchCep(cep) {
+    const result = await axios.get(`https://viacep.com.br/ws/${cep}/json`);
+
+    return result.data;
+  }
+
+  async listRental(payload) {
     const paginatedFields = {
       totalDocs: 'total',
-      docs: 'Pessoas',
+      docs: 'Locadoras',
       page: 'offset',
       nextPage: false,
       prevPage: false,
@@ -26,17 +33,17 @@ class PeopleRepository {
     return schema.paginate(payload, options, {});
   }
 
-  async updatePeople(id, payload) {
+  async updateRental(id, payload) {
     return schema.findByIdAndUpdate(id, payload, { new: true });
   }
 
-  async findOnePeople(id) {
+  async findOneRental(id) {
     return schema.findById(id);
   }
 
-  async removePeople(id) {
+  async removeRental(id) {
     return schema.findByIdAndDelete(id);
   }
 }
 
-module.exports = new PeopleRepository();
+module.exports = new RentalRepository();

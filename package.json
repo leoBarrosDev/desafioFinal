@@ -1,29 +1,38 @@
 {
   "dependencies": {
     "@joi/date": "^2.1.0",
+    "axios": "^0.25.0",
     "bcryptjs": "^2.4.3",
     "dotenv": "^14.3.2",
     "express": "^4.17.2",
+    "faker-br": "^0.4.1",
+    "jest": "^27.5.1",
     "joi": "^17.6.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.1.8",
-    "mongoose-paginate-v2": "^1.6.0"
+    "mongoose-paginate-v2": "^1.6.0",
+    "supertest": "^6.2.2",
+    "swagger-ui-express": "^4.3.0"
   },
   "name": "desafiofinal",
   "description": "API proposta no PB NodeJS da Compass Uol como desafio final",
   "version": "1.0.0",
   "main": "./src/server.js",
   "devDependencies": {
-    "eslint": "^7.32.0",
-    "eslint-config-standard": "^16.0.3",
+    "eslint": "^8.9.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.25.4",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^5.2.0",
-    "nodemon": "^2.0.15"
+    "eslint-plugin-prettier": "^4.0.0",
+    "nodemon": "^2.0.15",
+    "prettier": "^2.5.1"
   },
   "scripts": {
-    "lint": "eslint . --fix",
-    "dev": "nodemon ./src/server.js"
+    "start": "node ./src/server.js",
+    "lint": "npx eslint . --fix",
+    "dev": "nodemon ./src/server.js",
+    "test:cov": "jest --coverage --forceExit --coverageReporters",
+    "test": "jest --forceExit"
   },
   "repository": {
     "type": "git",
