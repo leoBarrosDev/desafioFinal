@@ -4,6 +4,7 @@ const Errors = require('../errors/Errors');
 class RentalController {
   async createRental(req, res) {
     try {
+      console.log(req.body);
       const result = await RentalService.createRental(req.body);
       return res.status(201).json(result);
     } catch (error) {

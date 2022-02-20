@@ -16,6 +16,8 @@ class RentalServices {
       adress.uf = uf;
       count++;
     } while (count < payload.endereco.length);
+
+    console.log('RentalServices.createRental()', payload);
     const result = await RentalRepository.createRental(payload, data);
     return result;
   }
