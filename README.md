@@ -15,7 +15,7 @@
   <img src="https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white"/>
 </p>
 
-<h1>Desafio Final - Parte 1</h1> 
+<h1>Desafio Final - PB NodeJS</h1> 
 
 
 
@@ -48,9 +48,13 @@ Essa API será responsável por algumas rotas que permitirão que o frontend se 
 
 :heavy_check_mark: Atualização de um veículo específico  
 
-:heavy_check_mark: Pesquisa de um veículo específico  
+:heavy_check_mark: Pesquisa de um veículo específico 
+
+:heavy_check_mark: Atualização de um acessório específico de veículo
 
 :heavy_check_mark: Remoção de um determinado veículo
+
+:heavy_check_mark: Autenticação de usuários
 
 :heavy_check_mark: Inclusão de pessoas
 
@@ -62,7 +66,16 @@ Essa API será responsável por algumas rotas que permitirão que o frontend se 
 
 :heavy_check_mark: Remoção de uma determinada pessoa
 
-:heavy_check_mark: Autenticação de usuários
+:heavy_check_mark: Inclusão de locadoras
+
+:heavy_check_mark: Listagem de locadoras  
+
+:heavy_check_mark: Atualização de uma locadora específica  
+
+:heavy_check_mark: Pesquisa de uma locadora específica  
+
+:heavy_check_mark: Remoção de uma determinada locadora
+
 
 
 ## Tecnologias
@@ -90,6 +103,16 @@ Instale as dependências:
 ```
 npm install
 ```
+Instale as Dev dependências
+```
+npm install --save-dev
+```
+Execute a aplicação em modo desenvolvimento
+```
+npm run dev
+```
+
+
 
 ... 
 
@@ -102,6 +125,15 @@ PORT=3000
 DB_HOST=mongodb://localhost:27017/<nome_do_banco>
 ```
 
+## Documentação
+  
+  Para acessar a documentação e poder testar as rotas acesso o link abaixo depois que o servidor estiver rodando
+  
+  ```
+  http://localhost:3000/api/v1/api-docs
+  ```
+  
+  
 ## Linguagens, dependencias e libs utilizadas :books:
 
 - [JavaScript](https://www.javascript.com/)
@@ -113,6 +145,8 @@ DB_HOST=mongodb://localhost:27017/<nome_do_banco>
 - [dotenv](https://www.npmjs.com/package/dotenv)
 - [bcryptjs](https://www.npmjs.com/package/bcryptjs)
 - [@joi/date](https://www.npmjs.com/package/@joi/date)
+- [axios](https://www.npmjs.com/package/axios)
+- [jest](https://www.npmjs.com/package/jest)
 
 ...
 
