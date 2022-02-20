@@ -2,7 +2,7 @@
   "openapi": "3.0.1",
   "info": {
     "title": "Desafio Final Compass",
-    "description": "A Compassolisa segue um seguimento de carros de luxo e semi luxo para alugar.",
+    "description": "A Compassolisa a partir de agora entra em um seguimento de locação de carros de luxo e semi luxo.",
     "version": "0.0.1",
     "termsOfService": "https://github.com/leoBarrosDev/desafioFinal/blob/main/LICENSE"
   },
@@ -97,7 +97,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The request succeeded.",
+            "description": "Request sent successfully.",
             "content": {
               "application/json": {
                 "schema": {
@@ -132,7 +132,7 @@
             }
           },
           "404": {
-            "description": "The server can not find the requested resource.",
+            "description": "Requested resource not found.",
             "content": {
               "application/json": {
                 "example": "Not found"
@@ -150,7 +150,7 @@
         "tags": [
           "Vehicles"
         ],
-        "summary": "Sign up a new car.",
+        "summary": "Registration of a new vehicle.",
         "requestBody": {
           "content": {
             "application/json": {
@@ -209,7 +209,7 @@
             "description": "Bad Request",
             "content": {
               "application/json": {
-                "example": "The server could not understand the request due to invalid syntax."
+                "example": "The server was unable to interpret the request."
               }
             }
           }
@@ -268,7 +268,7 @@
         },
         "responses": {
           "200": {
-            "description": "The request succeeded.",
+            "description": "Request sent successfully.",
             "content": {
               "application/json": {
                 "schema": {
@@ -298,7 +298,7 @@
             "description": "Bad Request",
             "content": {
               "application/json": {
-                "example": "The server could not understand the request due to invalid syntax."
+                "example": "The server was unable to interpret the request."
               }
             }
           },
@@ -306,7 +306,7 @@
             "description": "Not found",
             "content": {
               "application/json": {
-                "example": "The server can not find the requested resourcer."
+                "example": "Resource not found by server."
               }
             }
           }
@@ -321,7 +321,7 @@
         "tags": [
           "Vehicles"
         ],
-        "summary": "Delete a listed car.",
+        "summary": "Deleting a specific vehicle.",
         "parameters": [
           {
             "name": "id",
@@ -340,7 +340,7 @@
             "description": "Bad Request",
             "content": {
               "application/json": {
-                "example": "The server could not understand the request due to invalid syntax."
+                "example": "The server was unable to interpret the request."
               }
             }
           },
@@ -348,7 +348,7 @@
             "description": "Not found",
             "content": {
               "application/json": {
-                "example": "The server can not find the requested resource."
+                "example": "Resource not found by server."
               }
             }
           }
@@ -360,7 +360,7 @@
         "tags": [
           "Peoples"
         ],
-        "summary": "Sign up a new Person",
+        "summary": "Registration of a new person",
         "requestBody": {
           "content": {
             "application/json": {
@@ -425,7 +425,7 @@
             "description": "Bad Request",
             "content": {
               "application/json": {
-                "example": "The server could not understand the request due to invalid syntax."
+                "example": "The server was unable to interpret the request."
               }
             }
           }
@@ -435,7 +435,7 @@
         "tags": [
           "Peoples"
         ],
-        "summary": "Return all the Users",
+        "summary": "Listing all people",
         "parameters": [
           {
             "name": "nome",
@@ -537,7 +537,7 @@
             "description": "Not Found",
             "content": {
               "application/json": {
-                "example": "The server can not find the requested resource."
+                "example": "The server was unable to interpret the request."
               }
             }
           }
@@ -549,7 +549,7 @@
         "tags": [
           "Peoples"
         ],
-        "summary": "Update a User.",
+        "summary": "Update a people.",
         "parameters": [
           {
             "name": "id",
@@ -591,7 +591,7 @@
         },
         "responses": {
           "200": {
-            "description": "The request succeeded.",
+            "description": "Request sent successfully.",
             "content": {
               "application/json": {
                 "schema": {
@@ -627,7 +627,7 @@
             "description": "Bad Request",
             "content": {
               "application/json": {
-                "example": "The server could not understand the request due to invalid syntax."
+                "example": "The server was unable to interpret the request."
               }
             }
           },
@@ -635,7 +635,7 @@
             "description": "Not Found",
             "content": {
               "application/json": {
-                "example": "The server can not find the requested resource."
+                "example": "Resource not found."
               }
             }
           }
@@ -645,7 +645,7 @@
         "tags": [
           "Peoples"
         ],
-        "summary": "Delete a User.",
+        "summary": "Delete a people.",
         "parameters": [
           {
             "name": "id",
@@ -664,7 +664,7 @@
             "description": "Bad Request",
             "content": {
               "application/json": {
-                "example": "The server could not understand the request due to invalid syntax."
+                "example": "The server was unable to interpret the request."
               }
             }
           },
@@ -672,7 +672,7 @@
             "description": "Not Found",
             "content": {
               "application/json": {
-                "example": "The server can not find the requested resource."
+                "example": "Resource not found."
               }
             }
           }
@@ -684,7 +684,7 @@
         "tags": [
           "Authentication"
         ],
-        "summary": "Authenticate an Email",
+        "summary": "Authenticated by email and password",
         "requestBody": {
           "content": {
             "application/json": {
@@ -734,7 +734,7 @@
             "description": "Not Found",
             "content": {
               "application/json": {
-                "example": "The server can not find the requested resource."
+                "example": "Resource not found."
               }
             }
           }
@@ -746,7 +746,7 @@
         "tags": [
           "Rentals"
         ],
-        "summary": "Register a Rental Company consuming ViaCep external api",
+        "summary": "Registering a rental company consuming external API",
         "requestBody": {
           "content": {
             "application/json": {
@@ -763,7 +763,7 @@
                   },
                   "atividades": {
                     "type": "string",
-                    "example": "Aluga Veiculos"
+                    "example": "Aluguel de Veiculos"
                   },
                   "endereco": {
                     "type": "array",
