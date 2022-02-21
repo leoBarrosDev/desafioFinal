@@ -133,6 +133,10 @@ DB_HOST=mongodb://localhost:27017/<nome_do_banco>
   http://localhost:3000/api/v1/api-docs
   ```
   
+## Deploy
+  
+  <a>https://compassolisa-pbnodejs.herokuapp.com/api/v1/api-docs/</a>
+  
   
 ## Linguagens, dependencias e libs utilizadas :books:
 
