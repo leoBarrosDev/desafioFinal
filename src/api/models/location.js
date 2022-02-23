@@ -37,7 +37,7 @@ const locationSchema = mongoose.Schema(
 );
 
 locationSchema.plugin(mongoosePaginate);
+const location = mongoose.model('Location', locationSchema);
+location.paginate().then({});
 
-const Reserve = mongoose.model('location', locationSchema);
-
-module.exports = Reserve;
+module.exports = mongoose.model('Location', locationSchema);

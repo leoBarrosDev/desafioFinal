@@ -33,7 +33,7 @@ const FleetSchema = mongoose.Schema(
 );
 
 FleetSchema.plugin(mongoosePaginate);
+const fleet = mongoose.model('Fleet', FleetSchema);
+fleet.paginate().then({});
 
-const Fleet = mongoose.model('fleet', FleetSchema);
-
-module.exports = Fleet;
+module.exports = mongoose.model('Fleet', FleetSchema);
