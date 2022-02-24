@@ -14,7 +14,6 @@ module.exports = async (req, res, next) => {
         .required()
         .custom((value, help) => {
           if (!cnpjValidator(value)) {
-            console.log('Invalid CNPJ');
             return help.message(`O CNPJ ${value} is invalid`);
           }
           return true;
