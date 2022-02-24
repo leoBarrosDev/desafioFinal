@@ -27,6 +27,11 @@ describe('Test features People', () => {
     expect(response.status).toBe(200);
   });
 
+  it('should return a list of people', async () => {
+    const response = await request.get('/api/v1/peoples/');
+    expect(response.status).toBe(404);
+  });
+
   it('must register a person in the database', async () => {
     const user = createUser();
     const sut = await request.post(`/api/v1/people/`).send(user);
@@ -47,10 +52,22 @@ describe('Test features People', () => {
     expect(sut.body.email).toBe(fakeUserUpdate.email);
   });
 
+  it('must update a person', async () => {
+    const sut = await request.put('/api/v1/people/6216f167aed1965c4f254c48');
+
+    expect(sut.status).toBe(400);
+  });
+
   it('must delete a person', async () => {
     const sut = await request.delete(`/api/v1/people/${id}`);
 
     expect(sut.status).toBe(204);
+  });
+
+  it('must delete a person', async () => {
+    const sut = await request.delete('/api/v1/people/');
+
+    expect(sut.status).toBe(404);
   });
 
   it('must find a person by id', async () => {

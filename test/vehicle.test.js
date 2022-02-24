@@ -7,9 +7,9 @@ let result = {};
 beforeAll(async () => {
   const peopleExemple = {
     nome: 'Exemplo de pessoa',
-    cpf: '06019679411', // faker.br.cpf(),
+    cpf: '06019679411',
     data_nascimento: '09/02/1987',
-    email: 'exemplo@email.com', // faker.internet.email(),
+    email: 'exemplo@email.com',
     senha: '123456',
     habilitado: 'Sim'
   };
@@ -43,5 +43,20 @@ describe('Test features car', () => {
     const { status } = result;
     expect(status).toBe(201);
     done();
+  });
+
+  it('Should a list the cars', async () => {
+    const response = await request.get('/api/v1/car').set('Authorization', `Bearer ${tokenBearer}`);
+    expect(response.status).toBe(200);
+  });
+
+  it('Should a list the cars', async () => {
+    const response = await request.get('/api/v1/cars').set('Authorization', `Bearer ${tokenBearer}`);
+    expect(response.status).toBe(404);
+  });
+
+  it('Should a list the cars', async () => {
+    const response = await request.get('/api/v1/car');
+    expect(response.status).toBe(401);
   });
 });
