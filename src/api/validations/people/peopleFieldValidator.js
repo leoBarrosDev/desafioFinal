@@ -15,7 +15,6 @@ module.exports = async (req, res, next) => {
         .max(11)
         .custom((value, help) => {
           if (!cpfValidator(value)) {
-            console.log('cpf invalido');
             return help.message(`O CPF ${value} é inválido, tente novamente`);
           }
           return true;
